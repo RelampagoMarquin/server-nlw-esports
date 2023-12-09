@@ -11,15 +11,15 @@ datasource db {
 }
 
 model Game {
-  id        String @id @default(uuid()) @map("_id") @db.ObjectId
-  title     String
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  title     String @unique()
   bannerUrl String
   ads       Ad[]
 }
 
 model Ad {
-  id              String   @id @default(uuid()) @map("_id") @db.ObjectId
-  gameId          String
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  gameId          String   @db.ObjectId
   name            String
   yearsPlaying    Int
   discord         String
